@@ -1,0 +1,41 @@
+=== 平台: Ubuntu 24.04.5 LTS | Python 3.12.3 | kernel 7.0.0-38-generic ===
+
+=== 1) zip sha256（与 Windows 侧对比）===
+af30f7cd66dc739e5f44d1b88d9250c86d3f9df832e9bb67a31182261a8c5751  ../recon2873.zip
+
+=== 2) sha256sum -c SHA256SUMS.txt ===
+rc=0
+OK: 37   FAIL: 0
+
+=== 3) python3 tools/gen.py ===
+rc=0
+WROTE docs/flows.md 14391 bytes
+examples=20 categories=7
+
+=== 4) python3 tools/verify.py ===
+rc=0
+PASS: 38  FAIL: 0
+SUMMARY 38/38 PASS
+
+=== 5) python3 -m pytest tests -q ===
+rc=0
+21 passed in 0.04s
+
+=== 6) HTTP 服务（-m 入口）真实验 422 / 201 / 404 / 200 ===
+health=200
+{"detail": "核销合计 205000 分超过流水金额 120000 分"}  <- overflow http=422
+ok=201
+inst404=404
+=== 7) 直接跑 pkg/server.py 入口（第二种启动方式）===
+health2=200
+srv2.log:
+
+=== 8) gen 幂等：重跑后校验和 ===
+OK: 37  FAIL: 0
+
+=== 9) pii 扫描 ===
+scanned=35 hits=0
+rc=0
+
+=== 10) 包内可校验文件数（排除 __pycache__ / .pytest_cache / report/）===
+38

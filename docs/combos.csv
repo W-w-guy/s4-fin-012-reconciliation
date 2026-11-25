@@ -1,0 +1,8 @@
+flow_id,amount_cents,combo_index,installment_ids,combo_sum_cents,is_chosen
+P08,210000,1,I01+I02,210000,true
+P09,120000,1,I07+I08+I09,120000,true
+P10,90000,1,I05+I06,90000,true
+P15,140000,1,I11+I12,140000,true
+P15,140000,2,I12+I13,140000,false
+P17,175000,1,I04+I05+I06,175000,true
+P20,300000,1,I01+I02+I03,300000,true
